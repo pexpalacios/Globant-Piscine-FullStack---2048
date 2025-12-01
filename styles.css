@@ -1,0 +1,91 @@
+            .game-container {
+                background-color: #d5e3f7;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                padding: 20px;
+                gap: 15px;
+            }
+            
+            .game-container title {
+                text-align: center;
+                display: block;
+            }
+            
+            .game-title {
+                text-align: center;
+                font-size: 3rem;
+                display: flex;
+                justify-content: center;
+                gap: 4px;
+                margin: 0;
+            }
+            
+            .game-title span {
+                font-weight: bold;
+                font-family: arial;
+                /*text-shadow: 2px 3px 1px #3c567d, -2px -3px 1px #3c567d;
+        */
+            }
+            
+            .game-title span:nth-child(1) {
+                color: #fbf4e6;
+            }
+            
+            .game-title span:nth-child(2) {
+                color: #3c567d;
+            }
+            
+            .game-title span:nth-child(3) {
+                color: #fbf4e6;
+            }
+            
+            .game-title span:nth-child(4) {
+                color: #456da9;
+            }
+            
+            .score-container {
+                background-color: #6b87b0;
+                padding: 10px 15px;
+                border-radius: 3px;
+                text-align: center;
+                color: #fffbf5;
+                font-family: arial;
+                font-weight: bold;
+                text-transform: uppercase;
+            }
+            
+            .score-container span {
+                text-align: center;
+                display: block;
+            }
+            
+            .wrapper {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 80hv;
+            }
+            
+            .grid-container {
+                display: grid;
+                gap: 8px;
+                background-color: #6b87b0;
+                padding: 5px;
+                grid-template-columns: repeat(4, 1fr);
+                grid-auto-rows: 1fr;
+                width: 600px;
+                height: 600px;
+                border-radius: 3px;
+            }
+            
+            .grid-container div {
+                background-color: #fffbf5;
+                border-radius: 2px;
+                box-shadow: -3px -3px 1px #b8c6db inset, 3px 3px 1px #b8c6db inset, 2px 2px 2px #3c567d;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                aspect-ratio: 1 / 1;
+            }
