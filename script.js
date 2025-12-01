@@ -82,6 +82,17 @@ function updateGrid()
     }
 }
 
+function restartGrid()
+{
+	for (let c = 0; c < 4; c++)
+		for (let r = 0; r < 4; r++)
+				matrix[r][c] = 0;
+	score.textContent = 0;
+	addRandomTile();
+	addRandomTile();
+	updateGrid();
+}
+
 ///////////////////////
 // --- Movements --- //
 ///////////////////////
@@ -98,6 +109,8 @@ function keyPress(e)
 		break;
 		case "ArrowRight": moveRight();
 		break;
+		default:
+			return;
 	}
 	addRandomTile();
 	updateGrid();
