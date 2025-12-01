@@ -30,19 +30,19 @@
             }
             
             .game-title span:nth-child(1) {
-                color: #fbf4e6;
+                color: #6d9adf;
             }
             
             .game-title span:nth-child(2) {
-                color: #3c567d;
+                color: #214171;
             }
             
             .game-title span:nth-child(3) {
-                color: #fbf4e6;
+                color: #456da9;
             }
             
             .game-title span:nth-child(4) {
-                color: #456da9;
+                color: #264f8c;
             }
             
             .score-container {
@@ -81,7 +81,6 @@
             }
             
             .grid-container div {
-                background-color: #fffbf5;
                 border-radius: 2px;
                 box-shadow: -3px -3px 1px #b8c6db inset, 3px 3px 1px #b8c6db inset, 2px 2px 2px #3c567d;
                 display: flex;
@@ -89,3 +88,69 @@
                 align-items: center;
                 aspect-ratio: 1 / 1;
             }
+
+			.cell {
+				background: #2a446b;
+				font-size: 2rem;
+				font-family: arial;
+				font-weight: bold;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				transition: background 0.2s, transform 0.2s;
+			}
+
+.tile-2 {
+    background: #fefbda;
+    color: #1f3350;
+}
+
+.tile-4 {
+    background: #feec95;
+    color: #1f3350;
+}
+
+.tile-8 {
+    background: #ffeb7c;
+    color: #1f3350;
+}
+
+.tile-16 {
+    background: #ffe065;
+    color: #1f3350;
+}
+
+.tile-32 {
+    background: #ffdc6a;
+    color: #1f3350;
+}
+
+.tile-64 {
+    background: #fed366;
+    color: #1f3350;
+}
+
+.tile-128 {
+    background: #ffc757;
+    color: #1f3350;
+}
+
+.tile-256 {
+    background: #ffc052;
+    color: #1f3350;
+}
+
+.tile-512 {
+    background: #ffb349;
+    color: #1f3350;
+}
+
+.tile-1024 {
+    background: #ffa43c;
+    color: #1f3350;
+}
+
+.tile-2048 {
+    background: #ff9532;
+    color: #1f3350;
+}
