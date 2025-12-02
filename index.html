@@ -19,11 +19,13 @@
 
         <div class="score-container">
             <span>Score: <span id="score">0</span></span>
-            <button id="restart-btn" onclick="restartGrid()" >Restart</button>
+            
         </div>
-        <div class="grid-container">
-            <!-- The grid will be filled by JavaScript -->
-        </div>
+		<div class="wrapper">
+        	<div class="grid-container"></div>
+			<div class="tile-container"></div>
+		</div>
+		<button id="restart-btn" onclick="restartGrid()" >Restart</button>
     </div>
     <script src="script.js"></script>
 </body>
