@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>2048 Game</title>
     <link rel="stylesheet" href="styles.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 
 <body>
@@ -28,8 +29,12 @@
 			<button id="restart-btn" onclick="restartGrid()" >Restart</button>
 		</div>
 		
-		<div class="popup" id="popup">
-			<p>Tu madre</p>
+		<div class="popupwin" id="popupwin">
+			<p>You won!</p>
+			<button type="button" onclick="restartGrid()">OK</button>
+		</div>
+		<div class="popuplose" id="popuplose">
+			<p>You lost :(</p>
 			<button type="button" onclick="restartGrid()">OK</button>
 		</div>
 		<div class="overlay" id="overlay"></div>

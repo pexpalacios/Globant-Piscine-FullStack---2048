@@ -1,19 +1,12 @@
-/*
-Methods to do:
-- Check win and game over
-- Restart game
-- Color tiles
-
-*/
 /////////////////////////////////////
 // --- Grid creation and utils --- //
 /////////////////////////////////////
 
 let matrix = [
-    [2,4,8,16],
-    [32,64,128,256],
-    [0,512,0,0],
-    [0,1024,1024,0]
+    [0,0,0,0],
+    [0,0,0,0],
+    [0,0,0,0],
+    [0,0,0,0]
 ];
 
 function createGrid() 
@@ -53,6 +46,8 @@ function addRandomTile()
 		matrix[row][col] = 2;
 	else
 		matrix[row][col] = 4;
+	newTile = { r: row, c: col };
+	updateGrid();
 }
 
 function updateGrid() 
@@ -73,8 +68,14 @@ function updateGrid()
 				cell.textContent = value;
             cell.className = "cell";
             cell.classList.add(`tile-${value}`);
-			if (value === 2048)
-				checkWin();
+
+			if (newTile && newTile.r === r && newTile.c === c) 
+			{
+                cell.classList.add("new-tile");
+                setTimeout(() => { newTile = null }, 0);
+            }
+
+			checkStatus(value);
             index++;
         }
     }
@@ -82,7 +83,8 @@ function updateGrid()
 
 function restartGrid()
 {
-	popup.classList.remove('open-popup');
+	popupwin.classList.remove('open-popup');
+	popuplose.classList.remove('open-popup');
 	overlay.classList.remove('open-popup');
 	document.body.style.overflow = '';
 
@@ -118,67 +120,159 @@ function keyPress(e)
 	updateGrid();
 }
 
-function slide(row)
+function slide(row, onCombine) 
 {
-	row = row.filter(num => num !== 0);
-	for(let i = 0; i < row.length - 1; i++)
+    row = row.filter(num => num !== 0);
+
+    for (let i = 0; i < row.length - 1; i++) 
 	{
-		if (row[i] === row[i + 1])
+        if (row[i] === row[i + 1]) 
 		{
-			row[i] *= 2;
-			row[i + 1] = 0;
+            row[i] *= 2;
+            row[i + 1] = 0;
+            if (onCombine) 
+				onCombine(i);
 			score.textContent = parseInt(score.textContent) + row[i];
+        }
+    }
+
+    row = row.filter(num => num !== 0);
+    while (row.length < 4)
+        row.push(0);
+    return row;
+}
+
+function spawnSparkles(r, c) 
+{
+    const grid = document.querySelector('.grid-container');
+    const cell = grid.children[r * 4 + c];
+
+    const rect = cell.getBoundingClientRect();
+    const gridRect = grid.getBoundingClientRect();
+
+    const x = rect.left - gridRect.left + rect.width / 2;
+    const y = rect.top  - gridRect.top  + rect.height / 2;
+
+    const directions = [
+        [-1, -1],
+        [ 1, -1],
+        [-1,  1],
+        [ 1,  1]
+    ];
+
+    directions.forEach((d, index) => 
+	{
+        const star = document.createElement('i');
+        star.className = "fa-solid fa-star sparkle-fa";  
+        star.style.left = x + "px";
+        star.style.top  = y + "px";
+        star.style.setProperty("--dx", d[0]);
+        star.style.setProperty("--dy", d[1]);
+        star.style.animationDelay = (index * 40) + "ms";
+
+        grid.appendChild(star);
+        star.addEventListener("animationend", () => star.remove());
+    });
+}
+
+///////////////////
+// Move functions//
+///////////////////
+
+function moveUp() 
+{
+    for (let c = 0; c < 4; c++)
+	{
+        let col = [];
+        for (let r = 0; r < 4; r++)
+            col.push(matrix[r][c]);
+
+        col = slide(col, (i) => {
+            spawnSparkles(i, c);
+        });
+
+        for (let r = 0; r < 4; r++)
+            matrix[r][c] = col[r];
+    }
+}
+
+
+function moveDown() 
+{
+    for (let c = 0; c < 4; c++) 
+	{
+        let col = [];
+        for (let r = 0; r < 4; r++)
+            col.push(matrix[r][c]);
+
+        col = slide(col.reverse(), (i) => {
+            spawnSparkles(3 - i, c);
+        }).reverse();
+
+        for (let r = 0; r < 4; r++)
+            matrix[r][c] = col[r];
+    }
+}
+
+
+function moveLeft() {
+    for (let r = 0; r < 4; r++) 
+	{
+        matrix[r] = slide(matrix[r], (i) => {
+            spawnSparkles(r, i);
+        });
+    }
+}
+
+
+function moveRight() {
+    for (let r = 0; r < 4; r++) 
+	{
+        matrix[r] = slide(matrix[r].slice().reverse(), (i) => {
+            spawnSparkles(r, 3 - i);
+        }).reverse();
+    }
+}
+
+
+
+function checkStatus(value)
+{
+	if (value === 2048)
+	{
+		popupwin.classList.add('open-popup');
+		overlay.classList.add('open-popup');
+		document.body.style.overflow = 'hidden';
+	}
+
+	let full = true;
+	for (let r = 0; r < 4; r++)
+	{
+		for (let c = 0; c < 4; c++)
+		{
+			if (matrix[r][c] === 0)
+			{
+				full = false;
+				return;
+			}
+
 		}
 	}
-	row = row.filter(num  => num !== 0);
-	while (row.length < 4)
-			row.push(0);
-	return (row);
-}
 
-// Move functions//
-function moveUp()
-{
-	for (let c = 0; c < 4; c++)
+	if (full)
 	{
-		let col = [];
 		for (let r = 0; r < 4; r++)
-				col.push(matrix[r][c]);
-		col = slide(col);
-		for (let r = 0; r < 4; r++)
-				matrix[r][c] = col[r];
+		{
+			for (let c = 0; c < 4; c++)
+			{
+				if(c < 3 && matrix[r][c] === matrix[r][c + 1])
+					return;
+			}
+			if (r < 3 && matrix[r][0] === matrix[r + 1][0])
+				return;
+		}
 	}
-}
-
-function moveDown()
-{
-	for (let c = 0; c < 4; c++)
-	{
-		let col = [];
-		for (let r = 0; r < 4; r++)
-				col.push(matrix[r][c]);
-		col = slide(col.reverse()).reverse();
-		for (let r = 0; r < 4; r++)
-				matrix[r][c] = col[r];
-	}
-}
-
-function moveLeft()
-{
-	for (let r = 0; r < 4; r++)
-		matrix[r] = slide(matrix[r]);
-}
-
-function moveRight()
-{
-	for (let r = 0; r < 4; r++)
-		matrix[r] = slide(matrix[r].slice().reverse()).reverse();
-}
-
-
-function checkWin()
-{
-	popup.classList.add('open-popup');
+	popuplose.classList.add('open-popup');
 	overlay.classList.add('open-popup');
 	document.body.style.overflow = 'hidden';
 }
@@ -190,8 +284,10 @@ function checkWin()
 window.onload = () => 
 {
 	const score = document.getElementById("score");
-	let popup = document.getElementById("popup");
+	let popupwin = document.getElementById("popupwin");
+	let popuplose = document.getElementById("popuplose");
 	const overlay = document.getElementById("overlay");
+	let newTile = null;
 
 	createGrid();
 	document.addEventListener("keydown", keyPress);
