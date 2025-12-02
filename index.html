@@ -10,21 +10,30 @@
 
 <body>
     <div class="game-container">
-        <h1 class="game-title" ;>
-            <span>2</span>
-            <span>4</span>
-            <span>0</span>
-            <span>8</span>
-        </h1>
-
-        <div class="score-container">
-            <span>Score: <span id="score">0</span></span>
-            <button id="restart-btn" onclick="restartGrid()" >Restart</button>
-        </div>
+		<div class="header">
+        	<h1 class="game-title">
+            	<span>2</span>
+            	<span>4</span>
+            	<span>0</span>
+            	<span>8</span>
+        	</h1>
+        	<div class="score-container">
+           		<span>Score: <span id="score">0</span></span>
+			</div>
+		</div>
         <div class="grid-container">
             <!-- The grid will be filled by JavaScript -->
         </div>
-    </div>
+		<div class="button">
+			<button id="restart-btn" onclick="restartGrid()" >Restart</button>
+		</div>
+		
+		<div class="popup" id="popup">
+			<p>Tu madre</p>
+			<button type="button" onclick="restartGrid()">OK</button>
+		</div>
+		<div class="overlay" id="overlay"></div>
+	</div>
     <script src="script.js"></script>
 </body>
 

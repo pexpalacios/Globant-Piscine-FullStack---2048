@@ -10,10 +10,10 @@ Methods to do:
 /////////////////////////////////////
 
 let matrix = [
-    [0,0,0,0],
-    [0,0,0,0],
-    [0,0,0,0],
-    [0,0,0,0]
+    [2,4,8,16],
+    [32,64,128,256],
+    [0,512,0,0],
+    [0,1024,1024,0]
 ];
 
 function createGrid() 
@@ -67,16 +67,14 @@ function updateGrid()
             const value = matrix[r][c];
             const cell = cells[index];
 
-            // Update text
-            cell.textContent = value === 0 ? "" : value;
-
-            // Reset classes (keep the base "cell" class)
+			if (value === 0)
+				cell.textContent = "";
+			else
+				cell.textContent = value;
             cell.className = "cell";
-
-            // Add value class, e.g. "tile-2", "tile-4", ...
-            if (value !== 0) {
-                cell.classList.add(`tile-${value}`);
-            }
+            cell.classList.add(`tile-${value}`);
+			if (value === 2048)
+				checkWin();
             index++;
         }
     }
@@ -84,6 +82,10 @@ function updateGrid()
 
 function restartGrid()
 {
+	popup.classList.remove('open-popup');
+	overlay.classList.remove('open-popup');
+	document.body.style.overflow = '';
+
 	for (let c = 0; c < 4; c++)
 		for (let r = 0; r < 4; r++)
 				matrix[r][c] = 0;
@@ -174,13 +176,22 @@ function moveRight()
 }
 
 
+function checkWin()
+{
+	popup.classList.add('open-popup');
+	overlay.classList.add('open-popup');
+	document.body.style.overflow = 'hidden';
+}
+
 ////////////////////
 // --- OnLoad --- //
 ////////////////////
 
 window.onload = () => 
-{ 
+{
 	const score = document.getElementById("score");
+	let popup = document.getElementById("popup");
+	const overlay = document.getElementById("overlay");
 
 	createGrid();
 	document.addEventListener("keydown", keyPress);
