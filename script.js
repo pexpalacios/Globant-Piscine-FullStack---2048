@@ -10,8 +10,8 @@ Methods to do:
 /////////////////////////////////////
 
 let matrix = [
-    [2,4,8,16],
-    [32,64,128,512],
+    [0,0,0,0],
+    [0,0,0,0],
     [0,0,0,0],
     [0,0,0,0]
 ];
@@ -19,9 +19,7 @@ let matrix = [
 function createGrid() 
 {
 	const grid = document.querySelector('.grid-container');
-	const tileContainer = document.querySelector('.tile-container');
 	grid.innerHTML = "";
-	tileContainer.innerHTML = "";
 
 	for (let i = 0; i < 16; i++) 
 	{
@@ -31,7 +29,7 @@ function createGrid()
 	}
 
 	addRandomTile();
-	addRandomTile();
+    addRandomTile();
 	updateGrid();
 }
 
@@ -57,32 +55,29 @@ function addRandomTile()
 		matrix[row][col] = 4;
 }
 
-function setTilePosition(tile, row, col) 
-{
-    const cellSize = 114;
-    tile.style.transform = `translate(${col * cellSize}px, ${row * cellSize}px)`;
-}
-
 function updateGrid() 
 {
-    const tiles = document.querySelector('.tile-container');
-    tiles.innerHTML = "";
+    const cells = document.querySelectorAll('.grid-container .cell');
+    let index = 0;
 
     for (let r = 0; r < 4; r++) 
 	{
-		for (let c = 0; c < 4; c++) 
+        for (let c = 0; c < 4; c++) 
 		{
-			const value = matrix[r][c];
-			console.log(matrix[r][c]);
-			if (value !== 0)
-			{
-				const tile = document.createElement("div");
-				tile.className = "tile tile-" + value;
-				tile.textContent = value;
+            const value = matrix[r][c];
+            const cell = cells[index];
 
-				setTilePosition(tile, r, c);
-				tiles.appendChild(tile);
-			}
+            // Update text
+            cell.textContent = value === 0 ? "" : value;
+
+            // Reset classes (keep the base "cell" class)
+            cell.className = "cell";
+
+            // Add value class, e.g. "tile-2", "tile-4", ...
+            if (value !== 0) {
+                cell.classList.add(`tile-${value}`);
+            }
+            index++;
         }
     }
 }
