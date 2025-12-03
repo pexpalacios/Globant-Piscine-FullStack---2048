@@ -1,6 +1,16 @@
-import { checkStatus, matrix} from './script.js';
+import { matrix } from './script.js';
 
 let newTile = null;
+let popupwin = document.getElementById("popupwin");
+let popuplose = document.getElementById("popuplose");
+const score = document.getElementById("score");
+const overlay = document.getElementById("overlay");
+
+const buttons = document.querySelectorAll(".bttn");
+buttons.forEach(boton => {
+    boton.addEventListener("click", restartGrid);
+});
+
 
 export function createGrid() 
 {
@@ -88,4 +98,48 @@ export function restartGrid()
 	addRandomTile();
 	addRandomTile();
 	updateGrid();
+}
+
+export function checkStatus(value)
+{
+	if (value === 2048)
+	{
+		popupwin.classList.add('open-popup');
+		overlay.classList.add('open-popup');
+		document.body.style.overflow = 'hidden';
+	}
+
+	let full = true;
+	for (let r = 0; r < 4; r++)
+	{
+		for (let c = 0; c < 4; c++)
+		{
+			if (matrix[r][c] === 0)
+			{
+				full = false;
+				return;
+			}
+
+		}
+	}
+
+	if (full)
+	{
+		for (let r = 0; r < 4; r++)
+		{
+			for (let c = 0; c < 4; c++)
+			{
+				if(c < 3 && matrix[r][c] === matrix[r][c + 1])
+					return;
+			}
+			for (let c = 0; c < 4; c++)
+			{
+				if (r < 3 && matrix[r][c] === matrix[r + 1][c])
+					return;
+			}
+		}
+	}
+	popuplose.classList.add('open-popup');
+	overlay.classList.add('open-popup');
+	document.body.style.overflow = 'hidden';
 }

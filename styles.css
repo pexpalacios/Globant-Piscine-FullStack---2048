@@ -264,6 +264,7 @@ button:hover {
 	justify-content: center;
 	align-items: center;
 	font: var(--font);
+	font-size: 4rem;
 	background: var(--grid-cells);
 	transition: background 0.2s;
 }
