@@ -2,9 +2,9 @@ import { keyPress } from './movement.js';
 import { createGrid } from './grid.js';
 
 export let matrix = [
-    [2,4,8,16],
-    [256,128,64,32],
-    [512,1024,1024,0],
+    [0,0,0,0],
+    [0,0,0,0],
+    [0,0,0,0],
     [0,0,0,0]
 ];
 

@@ -18,3 +18,15 @@ For cleaning, you need to write in terminal:
 ```
 docker-compose down -v
 ```
+For deep cleaning you need (in case any residue stays in cache):
+```
+docker-compose down --volumes --remove-orphans && docker volume prune -f && docker system prune -af
+```
+
+
+---
+
+
+![game at the start with score 0](img1.png) ![game in the middle of it](img2.png)
+
+

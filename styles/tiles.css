@@ -1,18 +1,41 @@
 :root {
 	--light-text: #fbeee7;
 	--dark-text: #483758;
-	--bg-color: #e7ddd9;
-	--bg-light: #f7ece8;
-	--bg-2: #c9ab9e;
+	--bg-color: #f9f0e3;
+	--bg-light: #f5f2ed;
 	--dark-accent: #654b7c;
 	--light-accent: #e7d4ff;
 	--primary: #937bc3;
 	--grid-bg: #342245;
 	--grid-cells: #9575b1;
-
-	--ffamily: verdana;
-	--fweight: bold;
 	--font: bold 1.5rem helvetica;
+}
+
+.sparkle-fa {
+	position: absolute;
+	z-index: -20px;
+	font-size: 22px;
+	color: #ffe285;
+	opacity: 0;
+	pointer-events: none;
+	animation: sparkle-pop-fa 800ms ease-out forwards;
+}
+
+@keyframes sparkle-pop-fa {
+	0% {
+		transform: translate(0, 0) scale(0.2) rotate(0deg);
+		opacity: 1;
+	}
+
+	70% {
+		transform: translate(calc(var(--dx) * 24px), calc(var(--dy) * 24px)) scale(1.1) rotate(160deg);
+		opacity: 1;
+	}
+
+	100% {
+		transform: translate(calc(var(--dx) * 36px), calc(var(--dy) * 36px)) scale(0) rotate(300deg);
+		opacity: 0;
+	}
 }
 
 /*********/
@@ -20,15 +43,15 @@
 /*********/
 
 .tile-2 {
-	background: #e7d4ff;
+	background: #f6dffd;
 	color: var(--dark-text);
-	text-shadow: 0px 0px 4px #b39cd0;
+	text-shadow: 0px 0px 4px #ba95c6;
 }
 
 .tile-4 {
-	background: #fcd6e0;
+	background: #e3bff9;
 	color: var(--dark-text);
-	text-shadow: 0px 0px 4px #d1a3af;
+	text-shadow: 0px 0px 4px #aa81c3;
 }
 
 .tile-8 {

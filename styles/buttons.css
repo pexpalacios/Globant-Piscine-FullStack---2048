@@ -1,17 +1,13 @@
 :root {
 	--light-text: #fbeee7;
 	--dark-text: #483758;
-	--bg-color: #e7ddd9;
-	--bg-light: #f7ece8;
-	--bg-2: #c9ab9e;
+	--bg-color: #f7e4cd;
+	--bg-light: #fdf1e3;
 	--dark-accent: #654b7c;
 	--light-accent: #e7d4ff;
 	--primary: #937bc3;
 	--grid-bg: #342245;
 	--grid-cells: #9575b1;
-
-	--ffamily: verdana;
-	--fweight: bold;
 	--font: bold 1.5rem helvetica;
 }
 

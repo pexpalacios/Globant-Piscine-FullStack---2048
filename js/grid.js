@@ -108,7 +108,7 @@ export function checkStatus(value)
 	if (value === 2048)
 	{
 		popup.classList.add('open-popup');
-		popup.innerHTML = "<p>You won!</p>";
+		popup.innerHTML = "<p>Congratulations! You won!</p>";
 		document.removeEventListener("keydown", keyPress);
 		popup.appendChild(btn);
 	}
@@ -144,7 +144,7 @@ export function checkStatus(value)
 		}
 	}
 	popup.classList.add('open-popup');
-	popup.textContent = "You lost :(";
+	popup.innerHTML = "<p>Game over...</p>";
 	document.removeEventListener("keydown", keyPress);
 	popup.appendChild(btn);
 }

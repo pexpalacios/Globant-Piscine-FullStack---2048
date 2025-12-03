@@ -1,23 +1,20 @@
 :root {
 	--light-text: #fbeee7;
 	--dark-text: #483758;
-	--bg-color: #e7ddd9;
+	--bg-color: #e9d5bf;
 	--bg-light: #f7ece8;
-	--bg-2: #c9ab9e;
 	--dark-accent: #654b7c;
 	--light-accent: #e7d4ff;
 	--primary: #937bc3;
-	--grid-bg: #342245;
+	--grid-bg: #472e5f;
 	--grid-cells: #9575b1;
-
-	--ffamily: verdana;
-	--fweight: bold;
 	--font: bold 1.5rem helvetica;
 }
 
 /********/
 /* Grid */
 /********/
+
 .wrapper {
 	display: flex;
 	justify-content: center;
@@ -72,32 +69,5 @@
 	100% {
 		transform: scale(1);
 		opacity: 1;
-	}
-}
-
-.sparkle-fa {
-	position: absolute;
-	z-index: -20px;
-	font-size: 22px;
-	color: var(--primary);
-	opacity: 0;
-	pointer-events: none;
-	animation: sparkle-pop-fa 800ms ease-out forwards;
-}
-
-@keyframes sparkle-pop-fa {
-	0% {
-		transform: translate(0, 0) scale(0.2) rotate(0deg);
-		opacity: 1;
-	}
-
-	70% {
-		transform: translate(calc(var(--dx) * 24px), calc(var(--dy) * 24px)) scale(1.1) rotate(160deg);
-		opacity: 1;
-	}
-
-	100% {
-		transform: translate(calc(var(--dx) * 36px), calc(var(--dy) * 36px)) scale(0) rotate(300deg);
-		opacity: 0;
 	}
 }
