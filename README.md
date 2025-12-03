@@ -1,6 +1,6 @@
 # Globant Piscine FullStack - Project 00: 2048 GAME
 
-This first project is about recreating 2048, a puzle game you can find [here](https://juego2048.es/), using only HTML, CSS and JavaScript. The goal of the game is to reach 2048 by merging tiles with the same value, starting with values as low as 2 and 4. The challenge comes from only having a 4x4 grid to move the tiles in, which makes you run out of space for moves fast.
+This first project is about recreating 2048, a puzzle game you can find [here](https://juego2048.es/), using only HTML, CSS and JavaScript. The goal of the game is to reach 2048 by merging tiles with the same value, starting with values as low as 2 and 4. The challenge comes from only having a 4x4 grid to move the tiles in, which makes you run out of space for moves fast.
 
 ---
 
