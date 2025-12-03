@@ -1,7 +1,5 @@
 import { addRandomTile, updateGrid } from './grid.js';
-import { spawnSparkles } from './script.js';
-
-console.log('movement.js loaded');
+import { matrix } from './script.js';
 
 export function keyPress(e)
 {
@@ -94,4 +92,37 @@ function moveRight() {
             spawnSparkles(r, 3 - i);
         }).reverse();
     }
+}
+
+function spawnSparkles(r, c) 
+{
+    const grid = document.querySelector('.grid-container');
+    const cell = grid.children[r * 4 + c];
+
+    const rect = cell.getBoundingClientRect();
+    const gridRect = grid.getBoundingClientRect();
+
+    const x = rect.left - gridRect.left + rect.width / 2;
+    const y = rect.top  - gridRect.top  + rect.height / 2;
+
+    const directions = [
+        [-1, -1],
+        [ 1, -1],
+        [-1,  1],
+        [ 1,  1]
+    ];
+
+    directions.forEach((d, index) => 
+	{
+        const star = document.createElement('i');
+        star.className = "fa-solid fa-star sparkle-fa";  
+        star.style.left = x + "px";
+        star.style.top  = y + "px";
+        star.style.setProperty("--dx", d[0]);
+        star.style.setProperty("--dy", d[1]);
+        star.style.animationDelay = (index * 40) + "ms";
+
+        grid.appendChild(star);
+        star.addEventListener("animationend", () => star.remove());
+    });
 }

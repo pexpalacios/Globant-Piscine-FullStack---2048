@@ -1,6 +1,6 @@
-import { checkStatus } from './script.js';
+import { checkStatus, matrix} from './script.js';
 
-console.log('grid.js loaded');
+let newTile = null;
 
 export function createGrid() 
 {
