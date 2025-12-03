@@ -2,11 +2,16 @@ import { keyPress } from './movement.js';
 import { createGrid } from './grid.js';
 
 export let matrix = [
-    [0,0,0,0],
-    [0,0,0,0],
-    [0,0,0,0],
+    [2,4,8,16],
+    [256,128,64,32],
+    [512,1024,1024,0],
     [0,0,0,0]
 ];
+
+setTimeout(() => {
+    document.getElementById("game").classList.add("animate-in");
+}, 1000);
+
 
 document.addEventListener('DOMContentLoaded', () =>
 {	

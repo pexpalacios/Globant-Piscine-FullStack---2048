@@ -1,0 +1,86 @@
+:root {
+	--light-text: #fbeee7;
+	--dark-text: #483758;
+	--bg-color: #e7ddd9;
+	--bg-light: #f7ece8;
+	--bg-2: #c9ab9e;
+	--dark-accent: #654b7c;
+	--light-accent: #e7d4ff;
+	--primary: #937bc3;
+	--grid-bg: #342245;
+	--grid-cells: #9575b1;
+
+	--ffamily: verdana;
+	--fweight: bold;
+	--font: bold 1.5rem helvetica;
+}
+
+/*********/
+/* Tiles */
+/*********/
+
+.tile-2 {
+	background: #e7d4ff;
+	color: var(--dark-text);
+	text-shadow: 0px 0px 4px #b39cd0;
+}
+
+.tile-4 {
+	background: #fcd6e0;
+	color: var(--dark-text);
+	text-shadow: 0px 0px 4px #d1a3af;
+}
+
+.tile-8 {
+	background: #ffbdce;
+	color: var(--dark-text);
+	text-shadow: 0px 0px 4px #de98a9;
+}
+
+.tile-16 {
+	background: #ae96de;
+	color: var(--dark-text);
+	text-shadow: 0px 0px 4px #947cc4;
+}
+
+.tile-32 {
+	background: #ff93a9;
+	color: var(--dark-text);
+	text-shadow: 0px 0px 4px #d87186;
+}
+
+.tile-64 {
+	background: #9076c4;
+	color: var(--light-text);
+	text-shadow: 0px 0px 4px #6b529d;
+}
+
+.tile-128 {
+	background: #f17a91;
+	color: var(--dark-text);
+	text-shadow: 0px 0px 4px #cc5970;
+}
+
+.tile-256 {
+	background: #7447a4;
+	color: var(--light-text);
+	text-shadow: 0px 0px 4px #3d215b;
+}
+
+.tile-512 {
+	background: #aa2f56;
+	color: var(--light-text);
+	text-shadow: 0px 0px 4px #771d39;
+}
+
+.tile-1024 {
+	background: #822d61;
+	color: var(--light-text);
+	text-shadow: 0px 0px 4px #3d0929;
+}
+
+.tile-2048 {
+	background: #512041;
+	color: var(--light-text);
+	text-shadow: 0px 0px 4px #38081c;
+}

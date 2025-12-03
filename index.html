@@ -5,16 +5,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>2048 Game</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles/styles.css">
+	<link rel="stylesheet" href="styles/buttons.css">
+	<link rel="stylesheet" href="styles/grid.css">
+	<link rel="stylesheet" href="styles/tiles.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 
 <body>
+	
 	<div class="loadingScreen" id="loadingScreen">
 		<h1>2048</h1>
 		<div class="loader"></div> 
 	</div>
     <div class="game-container" id="game">
+		
 		<div class="header">
         	<h1 class="game-title">
             	<span>2</span>
@@ -31,15 +36,7 @@
 		<div class="button">
 			<button id="restart-btn" class="bttn" >Restart</button>
 		</div>
-		<div class="overlay" id="overlay"></div>
-		
-		<div class="popupwin" id="popupwin">
-			<p>You won!</p>
-			<button type="button" class="bttn">OK</button>
-		</div>
-		<div class="popuplose" id="popuplose">
-			<p>You lost :(</p>
-			<button type="button" class="bttn">OK</button>
+		<div class="popup" id="popup"></div>
 		</div>
 	</div>
     <script type="module" src="js/script.js"></script>

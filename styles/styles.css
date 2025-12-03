@@ -1,0 +1,113 @@
+:root {
+	--light-text: #fbeee7;
+	--dark-text: #483758;
+	--bg-color: #e7ddd9;
+	--bg-light: #f7ece8;
+	--bg-2: #c9ab9e;
+	--dark-accent: #654b7c;
+	--light-accent: #e7d4ff;
+	--primary: #937bc3;
+	--grid-bg: #342245;
+	--grid-cells: #9575b1;
+
+	--ffamily: verdana;
+	--fweight: bold;
+	--font: bold 1.5rem helvetica;
+}
+
+/***********************/
+/* Main game container */
+/***********************/
+
+.loadingScreen {
+	position: absolute;
+	z-index: 5;
+	width: 100%;
+	height: 100%;
+	background-color: var(--bg-color);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	font: var(--font);
+	text-shadow: 2px 4px 5px var(--dark-accent);
+	color: var(--primary);
+}
+
+.game-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	padding: 20px;
+	gap: 15px;
+	background-color: var(--bg-color);
+	animation: animate-in 3000ms forwards;
+}
+
+.loader {
+	width: 120px;
+	height: 20px;
+	border-radius: 20px;
+	background:
+		linear-gradient(var(--primary) 0 0) 0/0% no-repeat #eee;
+	animation: l2 1s infinite steps(10);
+}
+
+@keyframes l2 {
+	100% {
+		background-size: 110%
+	}
+}
+
+@keyframes animate-in {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.header {
+	display: grid;
+	align-items: center;
+	justify-content: center;
+	grid-template-columns: repeat(2, 1fr);
+	grid-auto-rows: 1fr;
+	padding: 10px;
+	gap: 4rem;
+}
+
+.game-title {
+	display: flex;
+	text-transform: uppercase;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 50%;
+	max-width: 200px;
+	min-width: 150px;
+	gap: 6px;
+	font: var(--font);
+	padding: 10px;
+	border-radius: 0.2rem;
+	border: 3px solid var(--grid-bg);
+	font-size: 3rem;
+	color: var(--bg-light);
+	background-color: var(--primary);
+}
+
+.score-container {
+	display: flex;
+	text-transform: uppercase;
+	justify-content: left;
+	align-items: center;
+	font: var(--font);
+	padding: 10px;
+	border-radius: 0.2rem;
+	font-size: 2rem;
+	color: var(--dark-text);
+}

@@ -1,10 +1,9 @@
 import { matrix } from './script.js';
+import { keyPress } from './movement.js';
 
 let newTile = null;
-let popupwin = document.getElementById("popupwin");
-let popuplose = document.getElementById("popuplose");
+let popup = document.getElementById("popup");
 const score = document.getElementById("score");
-const overlay = document.getElementById("overlay");
 
 const buttons = document.querySelectorAll(".bttn");
 buttons.forEach(boton => {
@@ -86,11 +85,6 @@ export function updateGrid()
 
 export function restartGrid()
 {
-	popupwin.classList.remove('open-popup');
-	popuplose.classList.remove('open-popup');
-	overlay.classList.remove('open-popup');
-	document.body.style.overflow = '';
-
 	for (let c = 0; c < 4; c++)
 		for (let r = 0; r < 4; r++)
 				matrix[r][c] = 0;
@@ -98,15 +92,25 @@ export function restartGrid()
 	addRandomTile();
 	addRandomTile();
 	updateGrid();
+	document.addEventListener("keydown", keyPress);
 }
 
 export function checkStatus(value)
 {
+	const btn = document.createElement("button");
+	btn.textContent = "Restart";
+	btn.className = "bttn";
+	btn.addEventListener("click", () => {
+		restartGrid();
+		popup.classList.remove('open-popup');
+	})
+
 	if (value === 2048)
 	{
-		popupwin.classList.add('open-popup');
-		overlay.classList.add('open-popup');
-		document.body.style.overflow = 'hidden';
+		popup.classList.add('open-popup');
+		popup.innerHTML = "<p>You won!</p>";
+		document.removeEventListener("keydown", keyPress);
+		popup.appendChild(btn);
 	}
 
 	let full = true;
@@ -139,7 +143,8 @@ export function checkStatus(value)
 			}
 		}
 	}
-	popuplose.classList.add('open-popup');
-	overlay.classList.add('open-popup');
-	document.body.style.overflow = 'hidden';
+	popup.classList.add('open-popup');
+	popup.textContent = "You lost :(";
+	document.removeEventListener("keydown", keyPress);
+	popup.appendChild(btn);
 }
