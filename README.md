@@ -25,8 +25,8 @@ docker-compose down --volumes --remove-orphans && docker volume prune -f && dock
 
 
 ---
-
-
-![game at the start with score 0](./imgs/img1.png) | ![game in the middle of it](./imgs/img2.png)
+game at the start with score 0 | middle of the game
+:-------------------------:|:-------------------------:
+![](./imgs/img1.png) | ![](./imgs/img2.png)
 
 
