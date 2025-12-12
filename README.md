@@ -6,9 +6,9 @@ This first project is about recreating 2048, a puzzle game you can find [here](h
 
 
 ### Set up
-This project is uses docker and so it needs to be launched with:
+This project uses docker and so it needs to be launched with:
 ```
-docker-compose build && docker-compose up
+docker-compose up --build
 ```
 in the terminal of the project. After building, you need to go to your prefered browser and get into:
 ```
@@ -17,10 +17,6 @@ localhost:8080
 For cleaning, you need to write in terminal:
 ```
 docker-compose down -v
-```
-For deep cleaning you need (in case any residue stays in cache):
-```
-docker-compose down --volumes --remove-orphans && docker volume prune -f && docker system prune -af
 ```
 
 
